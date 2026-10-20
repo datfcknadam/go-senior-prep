@@ -110,7 +110,7 @@ make bench                     # бенчмарки
 Нашёл ошибку в теории, придумал задачу или вопрос с собеседования — открывай [issue](https://github.com/datfcknadam/go-senior-prep/issues/new/choose) или PR.
 Вопросы по темам и разбор решений — в [Discussions](https://github.com/datfcknadam/go-senior-prep/discussions). Новые задачи оформляй в том же формате:
 `README.md` с условием, `task.go` с заготовкой (`panic("TODO")`), `solution.go` и тесты, которые проходят на эталоне под `-race`
-(`make check`) и падают на заготовке.
+(`make check`) и падают на заготовке. CI проверяет это на каждом PR, вместе с `gofmt` и `go vet`.
 
 ## Лицензия
 

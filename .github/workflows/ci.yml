@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: gofmt
+        run: |
+          unformatted=$(gofmt -l .)
+          if [ -n "$unformatted" ]; then
+            echo "Не отформатированы:"; echo "$unformatted"; exit 1
+          fi
+
+      - name: vet
+        run: make vet
+
+      - name: Эталоны проходят под -race
+        run: make check
+
+      - name: Заготовки не проходят тесты
+        run: |
+          fail=0
+          for dir in $(find . -name task.go -exec dirname {} \; | sort); do
+            if go test "$dir" >/dev/null 2>&1; then
+              echo "::error file=$dir/task.go::тесты проходят на заготовке — в task.go попало решение или тесты слишком слабые"
+              fail=1
+            else
+              echo "ok  $dir падает на заготовке"
+            fi
+          done
+          exit $fail
