@@ -107,7 +107,8 @@ make bench                     # бенчмарки
 
 ## Как помочь
 
-Нашёл ошибку в теории, придумал задачу или вопрос с собеседования — открывай issue или PR. Новые задачи оформляй в том же формате:
+Нашёл ошибку в теории, придумал задачу или вопрос с собеседования — открывай [issue](https://github.com/datfcknadam/go-senior-prep/issues/new/choose) или PR.
+Вопросы по темам и разбор решений — в [Discussions](https://github.com/datfcknadam/go-senior-prep/discussions). Новые задачи оформляй в том же формате:
 `README.md` с условием, `task.go` с заготовкой (`panic("TODO")`), `solution.go` и тесты, которые проходят на эталоне под `-race`
 (`make check`) и падают на заготовке.
 

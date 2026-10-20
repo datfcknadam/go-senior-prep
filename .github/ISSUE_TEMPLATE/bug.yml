@@ -1,0 +1,24 @@
+name: Ошибка
+description: Неточность в теории, падающий тест, баг панели
+title: "[ошибка] "
+labels: ["bug"]
+body:
+  - type: input
+    id: where
+    attributes:
+      label: Где
+      description: Файл и раздел, например 00-book/11-sync.md, «Ловушки»
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: Что не так
+      description: Что написано или происходит, и как должно быть. Для теории — ссылка на источник (спека, исходники Go, статья).
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Окружение
+      description: Вывод `go version` и ОС, если это про тесты или панель

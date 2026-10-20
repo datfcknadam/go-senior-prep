@@ -1,0 +1,46 @@
+name: Предложить задачу
+description: Новая практическая задача, упражнение или вопрос с собеседования
+title: "[задача] "
+labels: ["new-task"]
+body:
+  - type: dropdown
+    id: section
+    attributes:
+      label: Раздел
+      options:
+        - 01 Язык
+        - 02 Конкурентность
+        - 03 Рантайм
+        - 04 Паттерны надёжности
+        - 05 Базы данных
+        - 06 System Design
+        - 07 Лайвкодинг
+        - 08 Интервью (вопрос)
+        - Учебник (упражнение в «Закреплении»)
+    validations:
+      required: true
+  - type: textarea
+    id: statement
+    attributes:
+      label: Условие
+      description: Что нужно реализовать или на какой вопрос ответить. Сигнатуры, если есть.
+    validations:
+      required: true
+  - type: textarea
+    id: checks
+    attributes:
+      label: Что проверяет
+      description: Какие знания и ловушки задача вскрывает (гонки, утечки горутин, context, граничные случаи…).
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Откуда
+      description: Встречалась на собеседовании, в продакшене или придумана. Компанию называть не обязательно.
+  - type: checkboxes
+    id: pr
+    attributes:
+      label: Готов сделать PR
+      options:
+        - label: Оформлю сам в формате README.md + task.go + solution.go + тесты
